@@ -47,7 +47,8 @@ public class MyWebActivity extends AppCompatActivity implements ActivityCompat.O
         Log.d(TAG, "checkPermission");
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-            //
+            //если был отклонен то есть возможность вывести запрос еще раз
+            // 
         } else {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
