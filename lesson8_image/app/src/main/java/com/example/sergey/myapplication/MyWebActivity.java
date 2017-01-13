@@ -60,7 +60,7 @@ public class MyWebActivity extends AppCompatActivity implements ActivityCompat.O
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
-            case 1: //здесь нужно переделать!!!
+            case 1: //здесь нужно переделать!!! нет проверки
                 Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show();
 
                 return;
