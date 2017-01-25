@@ -32,12 +32,11 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                textStart.setText("Закачано файлов" + msg.what);
+                textStart.setText("Счетчик" + msg.what);
                 if (msg.what == 30) {
                     buttonStart.setEnabled(true);
-                    Toast.makeText(SecondActivity.this, "Все закачано", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SecondActivity.this, "Готово", Toast.LENGTH_SHORT).show();
                 }
-
             }
         };
     }
@@ -50,7 +49,8 @@ public class SecondActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         for (int i = 1; i <= 30; i++) {
-                            downloadFile();
+                            sleep(2);
+
                             handler.sendEmptyMessage(i);
                         }
                     }
@@ -59,7 +59,7 @@ public class SecondActivity extends AppCompatActivity {
                 break;
             case R.id.buttonTest:
                 Log.d("TAG", "test");
-                textTest.setText("count: " + testCount++);
+                textTest.setText("count test: " + testCount++);
                 break;
             default:
                 break;
@@ -67,9 +67,9 @@ public class SecondActivity extends AppCompatActivity {
 
     }
 
-    private void downloadFile() {
+    private void sleep(int i) {
         try {
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(i);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
