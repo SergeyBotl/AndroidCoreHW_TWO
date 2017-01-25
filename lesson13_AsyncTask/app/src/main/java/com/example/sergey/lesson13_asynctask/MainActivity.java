@@ -2,12 +2,15 @@ package com.example.sergey.lesson13_asynctask;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -81,15 +84,16 @@ public class MainActivity extends AppCompatActivity {
                 URLConnection conection = url.openConnection();
                 conection.connect();
                 int lenghtOfFile = conection.getContentLength();
+
                 InputStream input = new BufferedInputStream(url.openStream(), 8192);
                 imageRoot = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "image1.jpg");
-
                 OutputStream output = new FileOutputStream(imageRoot);
+
                 byte data[] = new byte[1024];
                 long total = 0;
                 while ((count = input.read(data)) != -1) {
                     total += count;
-                          publishProgress((int) ((total * 100) / lenghtOfFile));
+                    publishProgress((int) ((total * 100) / lenghtOfFile));
                     Log.d("Tag", "publishProgress " + (int) ((total * 100) / lenghtOfFile));
                     output.write(data, 0, count);
                 }
@@ -117,5 +121,19 @@ public class MainActivity extends AppCompatActivity {
             my_image.setImageDrawable(Drawable.createFromPath(imagePath));
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0, 1, 0, "SecondActivity");
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getTitle().equals("SecondActivity")) {
+            startActivity(new Intent(MainActivity.this, SecondActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
