@@ -32,7 +32,7 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                textStart.setText("Счетчик" + msg.what);
+                textStart.setText("Счетчик thread" + msg.what);
                 if (msg.what == 30) {
                     buttonStart.setEnabled(true);
                     Toast.makeText(SecondActivity.this, "Готово", Toast.LENGTH_SHORT).show();
