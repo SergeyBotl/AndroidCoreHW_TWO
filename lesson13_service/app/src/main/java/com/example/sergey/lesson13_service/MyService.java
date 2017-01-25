@@ -57,7 +57,6 @@ public class MyService extends Service {
                     try {
                         handler.sendEmptyMessage(i);
                         TimeUnit.SECONDS.sleep(15);
-
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
